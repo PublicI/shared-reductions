@@ -1,5 +1,5 @@
-import example from './example';
+import list from './list';
 
 export default {
-	example: example
+	list: list
 };

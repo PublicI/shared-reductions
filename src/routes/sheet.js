@@ -3,10 +3,10 @@ import models from '../models';
 
 const router = express.Router();
 
-router.get('/example.json', (req, res, next) => {
-    models.example((err, example) => {
+router.get('/sheets.json', (req, res, next) => {
+    models.sheets((err, sheets) => {
         res.json({
-            example: example
+            sheets: sheets
         });
     });
 });

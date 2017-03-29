@@ -41,6 +41,7 @@
     "raw-loader": "^0.5.1",
     "serve-favicon": "^2.3.0",
     "source-map-support": "^0.4.14",
+    "tabletop": "^1.5.1",
     "vue": "^2.0.5",
     "vue-router": "^2.0.1",
     "vue-template-compiler": "^2.1.10",

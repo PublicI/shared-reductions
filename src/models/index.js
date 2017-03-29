@@ -1,5 +1,5 @@
-import example from './example';
+import sheets from './sheets';
 
 export default {
-	example: example
+	sheets: sheets
 };

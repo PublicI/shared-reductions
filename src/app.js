@@ -55,10 +55,10 @@ app.get(['/preview','/preview.html'], (req, res) => {
     });
 });
 
-import example from './routes/example';
+import sheet from './routes/sheet';
 
-app.use(example);
-app.use(`/${pkg.version}`,example);
+app.use(sheet);
+app.use(`/${pkg.version}`,sheet);
 
 if (env === 'development') {
     // webpack middlware

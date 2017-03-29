@@ -61,7 +61,7 @@ let webEntry = {
     embed: './src/script/embed.js'
 };
 
-webEntry[`${pkg.version}/script`] = ['es6-promise/auto', `./src/script/script.js`];
+webEntry[`${pkg.version}/script`] = ['whatwg-fetch','es6-promise/auto', `./src/script/script.js`];
 
 let definePlugin = new webpack.DefinePlugin({
     'PKG_VERSION': `'${pkg.version}'`,

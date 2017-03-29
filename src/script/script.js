@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import App from './view/app';
 import VueRouter from 'vue-router';
-import example from './view/example';
+import list from './view/list';
 import model from './model';
 
 Vue.use(Vuex);
@@ -15,7 +15,7 @@ App.store = new Vuex.Store({
 const router = new VueRouter({
     routes: [{
         path: '/',
-        component: example
+        component: list
     }]
 });
 

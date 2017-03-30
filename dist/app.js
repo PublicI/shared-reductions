@@ -106,6 +106,7 @@ module.exports = {
 		"express": "^4.14.0",
 		"file-loader": "^0.10.0",
 		"hogan-express": "^0.5.2",
+		"journalize": "^1.2.0",
 		"js-yaml": "^3.6.1",
 		"json-loader": "^0.5.4",
 		"less-middleware": "^2.2.0",
@@ -114,6 +115,7 @@ module.exports = {
 		"raw-loader": "^0.5.1",
 		"serve-favicon": "^2.3.0",
 		"source-map-support": "^0.4.14",
+		"tabletop": "^1.5.1",
 		"vue": "^2.0.5",
 		"vue-router": "^2.0.1",
 		"vue-template-compiler": "^2.1.10",
@@ -145,25 +147,31 @@ module.exports = require("express");
 /* 2 */
 /***/ (function(module, exports) {
 
-module.exports = require("webpack");
+module.exports = require("fs");
 
 /***/ }),
 /* 3 */
+/***/ (function(module, exports) {
+
+module.exports = require("webpack");
+
+/***/ }),
+/* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_express__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models__ = __webpack_require__(16);
 
 
 
 var router = __WEBPACK_IMPORTED_MODULE_0_express___default.a.Router();
 
-router.get('/example.json', function (req, res, next) {
-    __WEBPACK_IMPORTED_MODULE_1__models__["a" /* default */].example(function (err, example) {
+router.get('/sheets.json', function (req, res, next) {
+    __WEBPACK_IMPORTED_MODULE_1__models__["a" /* default */].sheets(function (err, sheets) {
         res.json({
-            example: example
+            sheets: sheets
         });
     });
 });
@@ -171,13 +179,13 @@ router.get('/example.json', function (req, res, next) {
 /* harmony default export */ __webpack_exports__["a"] = (router);
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pkg = __webpack_require__(0),
-    webpack = __webpack_require__(2),
-    merge = __webpack_require__(18),
-    nodeExternals = __webpack_require__(19);
+    webpack = __webpack_require__(3),
+    merge = __webpack_require__(20),
+    nodeExternals = __webpack_require__(21);
 
 var env = 'production';
 
@@ -217,7 +225,7 @@ var webEntry = {
     embed: './src/script/embed.js'
 };
 
-webEntry[pkg.version + '/script'] = ['es6-promise/auto', './src/script/script.js'];
+webEntry[pkg.version + '/script'] = ['whatwg-fetch', 'es6-promise/auto', './src/script/script.js'];
 
 var definePlugin = new webpack.DefinePlugin({
     'PKG_VERSION': '\'' + pkg.version + '\'',
@@ -259,7 +267,7 @@ module.exports = (env !== 'development' ? ['node', 'web'] : ['web']).map(functio
 });
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports) {
 
 module.exports = function(originalModule) {
@@ -289,22 +297,16 @@ module.exports = function(originalModule) {
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports) {
 
 module.exports = require("body-parser");
 
 /***/ }),
-/* 7 */
-/***/ (function(module, exports) {
-
-module.exports = require("cookie-parser");
-
-/***/ }),
 /* 8 */
 /***/ (function(module, exports) {
 
-module.exports = require("fs");
+module.exports = require("cookie-parser");
 
 /***/ }),
 /* 9 */
@@ -348,15 +350,15 @@ module.exports = require("webpack-dev-middleware");
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(module) {Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_body_parser__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_body_parser__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_body_parser___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_body_parser__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_cookie_parser__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_cookie_parser__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_cookie_parser___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_cookie_parser__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_express__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_express__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_serve_favicon__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_serve_favicon___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_serve_favicon__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_fs__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_fs__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_fs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_fs__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_hogan_express__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_hogan_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_hogan_express__);
@@ -368,13 +370,13 @@ module.exports = require("webpack-dev-middleware");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_path___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_path__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__package_json__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__package_json___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__package_json__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_webpack__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_webpack__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_webpack___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_webpack__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__webpack_config__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__webpack_config__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__webpack_config___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__webpack_config__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_webpack_dev_middleware__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_webpack_dev_middleware___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_webpack_dev_middleware__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__routes_example__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__routes_sheet__ = __webpack_require__(4);
 
 
 
@@ -434,8 +436,8 @@ app.get(['/preview', '/preview.html'], function (req, res) {
 
 
 
-app.use(__WEBPACK_IMPORTED_MODULE_13__routes_example__["a" /* default */]);
-app.use('/' + __WEBPACK_IMPORTED_MODULE_9__package_json___default.a.version, __WEBPACK_IMPORTED_MODULE_13__routes_example__["a" /* default */]);
+app.use(__WEBPACK_IMPORTED_MODULE_13__routes_sheet__["a" /* default */]);
+app.use('/' + __WEBPACK_IMPORTED_MODULE_9__package_json___default.a.version, __WEBPACK_IMPORTED_MODULE_13__routes_sheet__["a" /* default */]);
 
 if (env === 'development') {
     // webpack middlware
@@ -464,18 +466,18 @@ if (!module.parent) {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (app);
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(5)(module)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(6)(module)))
 
 /***/ }),
 /* 16 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__sheets__ = __webpack_require__(17);
 
-/* harmony default export */ __webpack_exports__["a"] = (function (cb) {
-    cb(null, {
-        example: true
-    });
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+	sheets: __WEBPACK_IMPORTED_MODULE_0__sheets__["a" /* default */]
 });
 
 /***/ }),
@@ -483,21 +485,56 @@ if (!module.parent) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__example__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tabletop__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tabletop___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_tabletop__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_js_yaml__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_js_yaml___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_js_yaml__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_fs__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_fs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_fs__);
 
 
-/* harmony default export */ __webpack_exports__["a"] = ({
-	example: __WEBPACK_IMPORTED_MODULE_0__example__["a" /* default */]
+
+
+/* harmony default export */ __webpack_exports__["a"] = (function (cb) {
+    var config = __WEBPACK_IMPORTED_MODULE_1_js_yaml___default.a.safeLoad(__WEBPACK_IMPORTED_MODULE_2_fs___default.a.readFileSync(__dirname + '/../../config.yml', 'utf8'));
+
+    __WEBPACK_IMPORTED_MODULE_0_tabletop___default.a.init({
+        debug: true,
+        key: config.google.sheet.key,
+        callback: function callback(sheets, tabletop) {
+            var result = {};
+
+            Object.keys(sheets).forEach(function (key) {
+                result[key] = sheets[key].elements;
+            });
+
+            cb(null, result);
+        }
+        // simpleSheet: true
+
+    });
 });
 
 /***/ }),
 /* 18 */
 /***/ (function(module, exports) {
 
-module.exports = require("webpack-merge");
+module.exports = require("js-yaml");
 
 /***/ }),
 /* 19 */
+/***/ (function(module, exports) {
+
+module.exports = require("tabletop");
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports) {
+
+module.exports = require("webpack-merge");
+
+/***/ }),
+/* 21 */
 /***/ (function(module, exports) {
 
 module.exports = require("webpack-node-externals");

@@ -12,12 +12,71 @@ html {
 }
 
 .sharedReductions {
-	
+	.item {
+        margin-bottom: 20px;
+    }
+
+    .hed, .cutStatus {
+        font-size: 30px;
+        line-height: 32px;
+        padding-bottom: 4px;
+    }
+
+    .agency, .cutLabel {
+        color: rgb(50,50,50);
+        font-size: 13px;
+        line-height: 17px;
+        text-transform: uppercase;
+    }
+
+    .description, .cutReason {
+        font-size: 16px;
+        line-height: 20px;
+        padding-right: 15%;
+    }
+
+    .cutContainers:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .cutContainer {
+        float: left;
+        width: 30%;
+        padding-right: 5%;
+    }
+
+    .cutStatus.eliminate {
+        color: red;
+    }
+
+    .cutStatus.cut {
+        color: orange;
+    }
+/*
+    .cutContainer.eliminate {
+        background-color: red;
+    }
+
+    .cutContainer.cut {
+        background-color: orange;
+    }*/
+
 }
 
 @media (max-width: 800px) {
     .sharedReductions {
+        .cutContainer {
+            float: none;
+            width: 100%;
+            padding-right: 2%;
+            padding-bottom: 20px;
+        }
 
+        .cutReason {
+            margin-bottom: 0;
+        }
     }
 }
 

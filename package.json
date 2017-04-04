@@ -41,6 +41,7 @@
     "morgan": "^1.7.0",
     "raw-loader": "^0.5.1",
     "serve-favicon": "^2.3.0",
+    "smartquotes": "^2.0.0",
     "source-map-support": "^0.4.14",
     "tabletop": "^1.5.1",
     "vue": "^2.0.5",

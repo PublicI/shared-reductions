@@ -1,11 +1,11 @@
 <div>
     <div v-for="item in list" class="item">
 
-        <div class="agency">{{item.agency}}</div>
+        <div class="agency">{{ item.agency }}</div>
 
-        <h3 class="hed">{{item.program}}</h3>
+        <h3 class="hed">{{ item.program }}</h3>
 
-        <p class="description">{{item.cpi_description}}</p>
+        <p class="description">{{ item.cpi_description | smartQuotes }}</p>
 
         <div class="cutContainers">
 
@@ -13,7 +13,7 @@
                 <div class="cutLabel">2016 AUTHORIZED BUDGET</div>
 
                 <div class="cutStatus">
-                    {{moneyFormat(item.obama_2016_amt)}}
+                    {{ item.obama_2016_amt | moneyFormat }}
                 </div>
             </div>
 
@@ -21,26 +21,26 @@
                 <div class="cutLabel">2017 OBAMA PROPOSAL</div>
 
                 <div :class="'cutStatus ' + item.obama_status">
-                    {{item.obama_status}}
+                    {{ item.obama_status }}
                     <span v-if="['cut','consolidate'].indexOf(item.obama_status) !== -1">
-                        {{item.obama_savings_pct}}
+                        {{ item.obama_savings_pct }}
                     </span>
                 </div>
 
-                <p class="cutReason">{{item.cpi_obama_reason}}</p>
+                <p class="cutReason">{{ item.cpi_obama_reason | smartQuotes }}</p>
             </div>
 
             <div :class="'cutContainer ' + item.trump_status">
                 <div class="cutLabel">2018 TRUMP PROPOSAL</div>
 
                 <div :class="'cutStatus ' + item.trump_status">
-                    {{item.trump_status}}
+                    {{ item.trump_status }}
                     <span v-if="['cut','consolidate'].indexOf(item.trump_status) !== -1">
-                        {{item.trump_savings_pct}}
+                        {{ item.trump_savings_pct }}
                     </span>
                 </div>
 
-                <p class="cutReason">{{item.cpi_trump_reason}}</p>
+                <p class="cutReason">{{ item.cpi_trump_reason | smartQuotes }}</p>
             </div>
 
         </div>

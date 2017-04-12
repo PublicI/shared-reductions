@@ -1,19 +1,21 @@
 <div>
+    <p class="note">Budgets and proposals are for fiscal years, which begin on October 1 of the preceding calendar year and end on September 30.</p>
+
     <div v-for="item in list" class="item">
 
-        <div class="agency">{{item.agency}}</div>
+        <div class="agency">{{ item.agency }}</div>
 
-        <h3 class="hed">{{item.program}}</h3>
+        <h3 class="hed">{{ item.program }}</h3>
 
-        <p class="description">{{item.cpi_description}}</p>
+        <p class="description">{{ item.cpi_description | smartQuotes }} <span class="source"> &mdash; <a :href="item.description_source_url" target="_top">{{item.description_source_text}}</a></span></p>
 
         <div class="cutContainers">
 
             <div class="cutContainer">
-                <div class="cutLabel">2016 AUTHORIZED BUDGET</div>
+                <div class="cutLabel">2016 BUDGET</div>
 
                 <div class="cutStatus">
-                    {{moneyFormat(item.obama_2016_amt)}}
+                    {{ item.obama_2016_amt | moneyFormat }}
                 </div>
             </div>
 
@@ -21,26 +23,26 @@
                 <div class="cutLabel">2017 OBAMA PROPOSAL</div>
 
                 <div :class="'cutStatus ' + item.obama_status">
-                    {{item.obama_status}}
+                    {{ item.obama_status }}
                     <span v-if="['cut','consolidate'].indexOf(item.obama_status) !== -1">
-                        {{item.obama_savings_pct}}
+                        {{ item.obama_savings_pct }}
                     </span>
                 </div>
 
-                <p class="cutReason">{{item.cpi_obama_reason}}</p>
+                <p class="cutReason">{{ item.cpi_obama_reason | smartQuotes }} <span v-if="item.cpi_obama_reason !== ''" class="source"> &mdash; <a :href="item.budget_justification" target="_top">agency budget document</a></span></p>
             </div>
 
             <div :class="'cutContainer ' + item.trump_status">
                 <div class="cutLabel">2018 TRUMP PROPOSAL</div>
 
                 <div :class="'cutStatus ' + item.trump_status">
-                    {{item.trump_status}}
+                    {{ item.trump_status }}
                     <span v-if="['cut','consolidate'].indexOf(item.trump_status) !== -1">
-                        {{item.trump_savings_pct}}
+                        {{ item.trump_savings_pct }}
                     </span>
                 </div>
 
-                <p class="cutReason">{{item.cpi_trump_reason}}</p>
+                <p class="cutReason">{{ item.cpi_trump_reason | smartQuotes }} <span v-if="item.cpi_trump_reason !== ''" class="source"> &mdash; <a href="https://www.whitehouse.gov/sites/whitehouse.gov/files/omb/budget/fy2018/2018_blueprint.pdf" target="_top">budget blueprint</a></span></p>
             </div>
 
         </div>

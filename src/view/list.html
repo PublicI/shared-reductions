@@ -1,5 +1,5 @@
 <div>
-    <p class="note">Budgets and proposals are for fiscal years, which begin on October 1 of the preceding calendar year and end on September 30.</p>
+    <p class="note">Budgeted and proposed numbers are for fiscal years, which begin on October 1 of the preceding calendar year and end on September 30.</p>
 
     <div v-for="item in list" class="item">
 
@@ -29,7 +29,7 @@
                     </span>
                 </div>
 
-                <p class="cutReason">{{ item.cpi_obama_reason | smartQuotes }} <span v-if="item.cpi_obama_reason !== ''" class="source"> &mdash; <a :href="item.budget_justification" target="_top">agency budget document</a></span></p>
+                <p class="cutReason">{{ item.cpi_obama_reason | smartQuotes }} <span v-if="item.obama_reason_source !== ''" class="source"> &mdash; <a :href="item.obama_reason_source" target="_top">agency budget document</a></span></p>
             </div>
 
             <div :class="'cutContainer ' + item.trump_status">
@@ -42,7 +42,7 @@
                     </span>
                 </div>
 
-                <p class="cutReason">{{ item.cpi_trump_reason | smartQuotes }} <span v-if="item.cpi_trump_reason !== ''" class="source"> &mdash; <a href="https://www.whitehouse.gov/sites/whitehouse.gov/files/omb/budget/fy2018/2018_blueprint.pdf" target="_top">budget blueprint</a></span></p>
+                <p class="cutReason">{{ item.cpi_trump_reason | smartQuotes }} <span v-if="item.trump_reason_source !== ''" class="source"> &mdash; <a :href="item.trump_reason_source" target="_top">budget blueprint</a></span></p>
             </div>
 
         </div>

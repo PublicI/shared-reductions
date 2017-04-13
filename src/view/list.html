@@ -29,7 +29,7 @@
                     </span>
                 </div>
 
-                <p class="cutReason">{{ item.cpi_obama_reason | smartQuotes }} <span v-if="item.obama_reason_source !== ''" class="source"> &mdash; <a :href="item.obama_reason_source" target="_top">agency budget document</a></span></p>
+                <p class="cutReason">{{ item.cpi_obama_reason | smartQuotes }} <span v-if="item.obama_reason_source !== ''" class="source"> &mdash; <a :href="item.obama_reason_source" target="_top">{{item.obama_reason_source_text}}</a></span></p>
             </div>
 
             <div :class="'cutContainer ' + item.trump_status">

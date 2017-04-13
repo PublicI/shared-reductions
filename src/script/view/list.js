@@ -16,10 +16,11 @@ export default {
     // vuex: listModel,
     render: template.render,
     staticRenderFns: template.staticRenderFns,
+    /*
     created() {
-        console.log(sheets.shared_reductions);
+        // console.log(sheets.shared_reductions);
         // this.load();
-    },
+    },*/
     filters: {
         smartQuotes: smartquotes,
         moneyFormat(n) {

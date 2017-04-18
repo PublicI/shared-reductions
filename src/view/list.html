@@ -24,7 +24,7 @@
 
                 <div :class="'cutStatus ' + item.obama_status">
                     {{ item.obama_status }}
-                    <span v-if="['cut','consolidate'].indexOf(item.obama_status) !== -1">
+                    <span v-if="['cut','consolidate','cut discretionary funds'].indexOf(item.obama_status) !== -1">
                         {{ item.obama_savings_pct }}
                     </span>
                 </div>
@@ -37,7 +37,7 @@
 
                 <div :class="'cutStatus ' + item.trump_status">
                     {{ item.trump_status }}
-                    <span v-if="['cut','consolidate'].indexOf(item.trump_status) !== -1">
+                    <span v-if="['cut','consolidate','cut discretionary funds'].indexOf(item.trump_status) !== -1">
                         {{ item.trump_savings_pct }}
                     </span>
                 </div>

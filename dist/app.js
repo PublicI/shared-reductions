@@ -73,7 +73,7 @@ require("source-map-support").install();
 
 module.exports = {
 	"name": "shared-reductions",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"license": "MIT",
 	"devDependencies": {
 		"babel-cli": "^6.23.0",
